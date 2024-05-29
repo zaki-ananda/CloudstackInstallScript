@@ -262,7 +262,7 @@ for cfg_param in ${cfg_params[@]}; do # Insert param to config file
   fi
 done
 UUID=$(uuid)
-if ! grep "^host_uuid" /etc/libvirt/libvirtd.conf; then # If config param is not present
+if ! grep "^host_uuid" /etc/libvirt/libvirtd.conf &> /dev/null; then # If config param is not present
   echo host_uuid = \"$UUID\" >> /etc/libvirt/libvirtd.conf
 fi
 run_command "systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket"
