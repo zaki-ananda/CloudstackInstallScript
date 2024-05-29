@@ -76,7 +76,7 @@ if [[ "$EUID" -ne 0 ]]; then
   exit 1
 fi
 
-isInstalled_path="~/.config/cloudstack/installed"
+isInstalled_path="/root/.config/cloudstack/installed"
 if [[ -f $isInstalled_path ]]; then
   echo "Cloudstack is already installed"
   echo "(To uninstall, run: \"sudo apt-get purge cloudstack*\" and \"sudo rm ~/.config/cloudstack/installed\")"
@@ -309,8 +309,8 @@ run_command "cloudstack-setup-databases cloud:cloud@localhost --deploy-as=root:$
 run_command "cloudstack-setup-management"
 echo "Cloudstack installation successful!"
 
-mkdir -p ~/.config/cloudstack
-touch ~/.config/cloudstack/installed
+mkdir -p /root/.config/cloudstack/
+touch /root/.config/cloudstack/installed
 
 echo "Open management console in http://$ip_addr:8080/client"
 exit 0
