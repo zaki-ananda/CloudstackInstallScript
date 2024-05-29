@@ -314,5 +314,5 @@ mkdir -p /root/.config/cloudstack/
 touch /root/.config/cloudstack/installed
 
 echo "Open management console in http://$ip_addr:8080/client"
-echo "Use default credential. (Username: admin) (Password: password)
+echo "Use default credential. (Username: admin) (Password: password)"
 exit 0
