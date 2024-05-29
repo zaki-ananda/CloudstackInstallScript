@@ -237,7 +237,7 @@ if [[ ! -f $netcfg_path ]]; then # If no cloudstack net config, create it
 else # Cloudstack net config already exists
   echo "Network already configured ($netcfg_path already exists)"
   chosen_int="cloudbr0"
-  if ! ip addr show dev $chosen_int; then
+  if ! ip addr show dev $chosen_int  &> /dev/null; then
     echo "ERROR: Interface cloudbr0 does not exist but net config already present."
     echo "Please delete existing configuration ($netcfg_path) and run this script again."
     exit 1
