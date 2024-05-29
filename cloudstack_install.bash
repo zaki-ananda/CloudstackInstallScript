@@ -245,6 +245,7 @@ else # Cloudstack net config already exists
   ip_addr=$(ip -4 addr show dev $chosen_int | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
   gw=$(ip route | grep $chosen_int | grep default | awk '{print $3}')
 fi
+sleep 5
 if ! is_repo_reachable; then
   echo "ERROR: Network configured, but failed to reach repository"
   exit 1
