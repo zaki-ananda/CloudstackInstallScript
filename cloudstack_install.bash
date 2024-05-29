@@ -79,7 +79,7 @@ fi
 isInstalled_path="/root/.config/cloudstack/installed"
 if [[ -f $isInstalled_path ]]; then
   echo "Cloudstack is already installed"
-  echo "To uninstall, run: [sudo apt-get purge \"cloudstack*\"] and [sudo rm ~/.config/cloudstack/installed]"
+  echo "To uninstall, run: [sudo apt-get purge \"cloudstack*\"] and [sudo rm /root/.config/cloudstack/installed]"
   exit 1
 fi
 
