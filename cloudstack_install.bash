@@ -204,7 +204,7 @@ if [[ ! -f $netcfg_path ]]; then # If no cloudstack net config, create it
       fi
   done
   echo "$net_basecfg" > $netcfg_path # Pass base cfg to path
-  net_int=$(ls /sys/class/net | grep -E "(en|eth)"; IFS=' ' set -- $net_int
+  net_int=$(ls /sys/class/net | grep -E "(en|eth)"); IFS=' ' set -- $net_int
   net_int=("$@"); # Get list of network interface
   echo "Pick one network interface to be used for cloud network bridge"
   i=0
