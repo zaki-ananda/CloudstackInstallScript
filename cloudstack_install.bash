@@ -303,8 +303,9 @@ echo "AppArmor configuration succesful."
 echo "Installing Cloudstack package..."
 run_command "apt-get update -y"
 run_command "apt-get install -y cloudstack-management cloudstack-usage cloudstack-agent"
-echo -n Enter root password of this machine: 
+echo -n "Enter root password of this machine: "
 read -rs password
+echo
 run_command "cloudstack-setup-databases cloud:cloud@localhost --deploy-as=root:$password -i $ip_addr"
 run_command "cloudstack-setup-management"
 echo "Cloudstack installation successful!"
