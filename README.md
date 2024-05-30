@@ -16,3 +16,8 @@ Note: Cloudstack does not support management server network using wireless inter
 # REGISTER ISO AND ADD INSTANCE
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0sKBQg9rr50/0.jpg)](https://www.youtube.com/watch?v=0sKBQg9rr50)
 
+Prerequisites:
+1. Root Privileges: Make sure root privileges is enabled
+2. Required Packages: Please install the following packages before you launch the script: `packages=("openssh-server" "sudo" "intel-microcode" "mysql-server" "qemu-system-x86" "nfs-kernel-server" "quota" "bridge-utils" "libvirt-daemon-system" "uuid" "iptables-persistent" "netplan.io")`
+3. NTP and SSH: Please make sure NTP Service active and SSH Configuration are adjusted to allow root login.
+4. Internet Connections: Obviously, you need to be connected to the internet in order to access cloudstack server.
