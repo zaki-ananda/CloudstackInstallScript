@@ -234,6 +234,9 @@ if [[ ! -f $netcfg_path ]]; then # If no cloudstack net config, create it
   chmod go-w $netcfg_path
   run_command "netplan generate"
   run_command "netplan apply"
+  run_command "systemctl restart NetworkManager systemd-networkd"
+  run_command "modprobe ip_conntrack"
+  run_command "modprobe nf_conntrack"
 else # Cloudstack net config already exists
   echo "Network already configured ($netcfg_path already exists)"
   chosen_int="cloudbr0"
@@ -281,7 +284,7 @@ for cfg_param in ${cfg_params[@]}; do
   fi
 done
 run_command "sysctl -p &> /dev/null"
-NETWORK_ADDR=$(ip route | grep $chosen_int | grep kernel | grep -v default | awk '{print $1}')
+NETWORK_ADDR=$(ip route | grep cloudbr0 | grep kernel | grep -v default | awk '{print $1}')
 tcpport_open=(111 2049 32803 892 875 662 3128 8250 8080 8443 9090 16514)
 for port in ${tcpport_open[@]}; do
   run_command "iptables -A INPUT -s $NETWORK_ADDR -m state --state NEW -p tcp --dport $port -j ACCEPT"
